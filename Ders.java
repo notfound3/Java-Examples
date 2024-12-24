@@ -1,27 +1,22 @@
-public class Ders {
-    private static int dersSayisi = 0;
-    private String ad;
-    private int sinif;
-    private String hoca;
+abstract class Ders implements DersIsle {
+    protected String DersAd;
+    protected String DersSinif;// Global degişkenler
 
-    public Ders(String ad) {
-        this(ad, 0, "Bilinmiyor");
+    public Ders(String DersAd, String DersSinif) {
+        this.DersAd = DersAd;
+        this.DersSinif = DersSinif;//constractor
     }
 
-    public Ders(String ad, int sinif, String hoca) {
-        this.ad = ad;
-        this.sinif = sinif;
-        this.hoca = hoca;
-        dersSayisi++;
+    public String IsmiBuyut(String DersAd) {
+        return DersAd.toUpperCase();//normal metot
     }
 
-    public void DersBilgisiYaz() {
-        System.out.println("Ders Adi: " + ad);
-        System.out.println("Sinif: " + sinif);
-        System.out.println("Hoca: " + hoca);
-    }
+    public abstract String IsimGetir();
+    public abstract String SinifGetir();//soyut metoto
 
-    public static void DersSayiBilgisiYaz() {
-        System.out.println("Toplam Ders Sayisi: " + dersSayisi);
-    }
+    @Override
+    public abstract void SozluSunum();
+
+    @Override
+    public abstract void YaziliSunum();
 }
